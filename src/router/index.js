@@ -38,4 +38,24 @@ const router = createRouter({
     ]
 })
 
+router.beforeEach(async (to,from,next)=>{
+    const $store = useStore()
+    const token = $store.getToken
+    if(to.name === 'login'){
+        next()
+    } else {
+        if(!token){
+            next({name : 'login'})
+        } else {
+            var response = await axios.post(CONSTANT.serverURL+'/validate',{ token })
+            if(response.data){
+                next()
+            } else {
+                $store.$reset()
+                next({name : 'login'})
+            }
+        }
+    }
+})
+
 export default router
