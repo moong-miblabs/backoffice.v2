@@ -39,9 +39,10 @@ npm run build
 	2. axios
 	3. pinia
 		1. pinia-plugin-persistedstate
-	4. vue
-	5. vue-router
-	6. vuelidate
+	4. sweetalert2
+	5. vue
+	6. vue-router
+	7. vuelidate
 2. Vendor from Theme Nice Admin
 	1. Bootstrap 5
 	2. Icon
