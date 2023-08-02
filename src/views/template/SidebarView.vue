@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive, computed, onMounted, onUpdated, onUnmounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute, RouterLink } from 'vue-router'
 import { useStore } from '@/stores/index'
 
 const $store 	= useStore()
@@ -12,6 +12,18 @@ const route 	= useRoute()
 	<!-- ======= Sidebar ======= -->
 	<aside id="sidebar" class="sidebar">
 	    <ul class="sidebar-nav" id="sidebar-nav">
+			<li class="nav-item">
+	            <RouterLink class="nav-link collapsed" :to="{ name : 'responden' }">
+	                <i class="bi bi-people"></i>
+	                <span>Responden</span>
+	            </RouterLink>
+	        </li>
+			<li class="nav-item">
+	            <a class="nav-link collapsed" href="index.html">
+	                <i class="ri-user-2-line"></i>
+	                <span>Admin</span>
+	            </a>
+	        </li>
 	        <li class="nav-item">
 	            <a class="nav-link collapsed" href="index.html">
 	                <i class="bi bi-grid"></i>

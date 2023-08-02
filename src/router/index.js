@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useStore } from '@/stores/index'
 import * as CONSTANT from '@/constant'
 import HomeView from '../views/HomeView.vue'
+import axios from 'axios'
 
 import Header from '../views/template/HeaderView.vue'
 import Sidebar from '../views/template/SidebarView.vue'
@@ -11,8 +12,8 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: '/home',
-            name: 'home',
+            path: '/default',
+            name: 'default',
             component: HomeView
         },
         {
@@ -22,7 +23,7 @@ const router = createRouter({
         },
         {
             path: '/',
-            name: 'blank',
+            name: 'home',
             components : {
                 Header,
                 Sidebar,
@@ -34,6 +35,22 @@ const router = createRouter({
             path: '/login',
             name: 'login',
             component: () => import('../views/LoginView.vue')
+        },
+        {
+            path: '/responden',
+            name: 'responden',
+            components : {
+                Header,
+                Sidebar,
+                default : () => import('../views/ListRespondenView.vue'),
+                Footer
+            }
+        },
+        // 404 Not Found
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'NotFound',
+            component: () => import('../views/NotFoundView.vue')
         }
     ]
 })
@@ -47,7 +64,7 @@ router.beforeEach(async (to,from,next)=>{
         if(!token){
             next({name : 'login'})
         } else {
-            var response = await axios.post(CONSTANT.serverURL+'/validate',{ token })
+            var response = await axios.post(CONSTANT.serverURL+'verify',{ token })
             if(response.data){
                 next()
             } else {

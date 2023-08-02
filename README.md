@@ -37,12 +37,13 @@ npm run build
 1. NPM Packeges
 	1. @vuepic/vue-datepicker
 	2. axios
-	3. pinia
+	3. dateformat (@/helper/dateformat.js) for import use `import * as dateFormat from '@/helper/dateformat'`
+	4. pinia
 		1. pinia-plugin-persistedstate
-	4. sweetalert2
-	5. vue
-	6. vue-router
-	7. vuelidate
+	5. sweetalert2
+	6. vue
+	7. vue-router
+	8. vuelidate (@vuelidate/core @vuelidate/validators)
 2. Vendor from Theme Nice Admin
 	1. Bootstrap 5
 	2. Icon
@@ -53,6 +54,9 @@ npm run build
 		1. Chart.js
 		2. ApexCharts
 		3. ECharts
+3. Downloaded libraries
+	1. DataTables with JQuery
+	2. font awesome 4
 
 ### Note
 

@@ -1,21 +1,80 @@
 <script setup>
+import * as CONSTANT from '@/constant'
 import { ref, reactive, computed, onMounted, onUpdated, onUnmounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter, useRoute, RouterLink } from 'vue-router'
 import { useStore } from '@/stores/index'
 
 const $store 	= useStore()
 const $router 	= useRouter()
 const route 	= useRoute()
+
+const appName  = ref(CONSTANT.appName)
+const appIcon  = ref(CONSTANT.appIcon)
+
+function logout(){
+	$store.$reset()
+    $router.push({name : 'login'})
+}
+
+onMounted(()=>{
+	/**
+	* Template Name: NiceAdmin - v2.5.0
+	* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+	* Author: BootstrapMade.com
+	* License: https://bootstrapmade.com/license/
+	*/
+	(function() {
+		"use strict";
+		/**
+		* Easy selector helper function
+		*/
+		const select = (el, all = false) => {
+			el = el.trim()
+			if (all) {
+				return [...document.querySelectorAll(el)]
+			} else {
+				return document.querySelector(el)
+			}
+		}
+
+		/**
+		* Easy event listener function
+		*/
+		const on = (type, el, listener, all = false) => {
+			if (all) {
+				select(el, all).forEach(e => e.addEventListener(type, listener))
+			} else {
+				select(el, all).addEventListener(type, listener)
+			}
+		}
+
+		/**
+		* Easy on scroll event listener 
+		*/
+		const onscroll = (el, listener) => {
+			el.addEventListener('scroll', listener)
+		}
+
+		/**
+		* Sidebar toggle
+		*/
+		if (select('.toggle-sidebar-btn')) {
+			on('click', '.toggle-sidebar-btn', function(e) {
+				select('body').classList.toggle('toggle-sidebar')
+			})
+		}
+	})();
+})
 </script>
 
 <template>
 	<!-- ======= Header ======= -->
 	<header id="header" class="header fixed-top d-flex align-items-center">
 	    <div class="d-flex align-items-center justify-content-between">
-	        <a href="index.html" class="logo d-flex align-items-center">
-	            <img src="assets/img/logo.png" alt="">
-	            <span class="d-none d-lg-block">NiceAdmin</span>
-	        </a>
+	        <RouterLink :to="{ name : 'home' }" class="logo d-flex align-items-center">
+	            <img :src="appIcon" alt="">
+	            <span class="d-none d-lg-block">{{ appName }}</span>
+	        </RouterLink>
 	        <i class="bi bi-list toggle-sidebar-btn"></i>
 	    </div>
 	    <!-- End Logo -->
@@ -164,7 +223,7 @@ const route 	= useRoute()
 	            <li class="nav-item dropdown pe-3">
 	                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
 	                    <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-	                    <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+	                    <span class="d-none d-md-block dropdown-toggle ps-2">{{ $store.getNama }}</span>
 	                </a>
 	                <!-- End Profile Iamge Icon -->
 	                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -203,7 +262,7 @@ const route 	= useRoute()
 	                        <hr class="dropdown-divider">
 	                    </li>
 	                    <li>
-	                        <a class="dropdown-item d-flex align-items-center" href="#">
+	                        <a class="dropdown-item d-flex align-items-center" href="#" @click="logout">
 	                            <i class="bi bi-box-arrow-right"></i>
 	                            <span>Sign Out</span>
 	                        </a>

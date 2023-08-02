@@ -1,1 +1,6 @@
 export const serverURL = ""
+export const appName = ""
+export const appTitle = ""
+export const appIcon = ""
+export const appBy = ""
+export const appByLink = ""
