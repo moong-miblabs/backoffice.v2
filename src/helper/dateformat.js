@@ -50,3 +50,8 @@ export function human(strTime){
 	const date = new Date(strTime);
 	return dateFormat(date,"dddd, d mmm yyyy HH:MM")
 }
+
+export function file(strTime){
+  const date = new Date(strTime);
+  return dateFormat(date,"yyyymmddHMMssL")
+}

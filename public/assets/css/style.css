@@ -94,7 +94,7 @@ h6 {
   color: #fff;
 }
 
-.back-to-top.active {
+.back-to-top.router-link-active {
   visibility: visible;
   opacity: 1;
 }
@@ -340,7 +340,7 @@ h6 {
   color: #899bbd;
 }
 
-.breadcrumb .active {
+.breadcrumb .router-link-active {
   color: #51678f;
   font-weight: 600;
 }
@@ -361,7 +361,7 @@ h6 {
   color: #4154f1;
 }
 
-.nav-tabs-bordered .nav-link.active {
+.nav-tabs-bordered .nav-link.router-link-active {
   background-color: #fff;
   color: #4154f1;
   border-bottom: 2px solid #4154f1;
@@ -765,11 +765,11 @@ h6 {
 }
 
 .sidebar-nav .nav-content a:hover,
-.sidebar-nav .nav-content a.active {
+.sidebar-nav .nav-content a.router-link-active {
   color: #4154f1;
 }
 
-.sidebar-nav .nav-content a.active i {
+.sidebar-nav .nav-content a.router-link-active i {
   background-color: #4154f1;
 }
 

@@ -6,7 +6,7 @@ import { useStore } from '@/stores/index'
 import axios from 'axios'
 
 import { useVuelidate } from '@vuelidate/core'
-import { required } from '@vuelidate/validators'
+import { helpers, required } from '@vuelidate/validators'
 import Swal from 'sweetalert2'
 
 
@@ -19,6 +19,18 @@ const appIcon  = ref(CONSTANT.appIcon)
 const appBy  	= ref(CONSTANT.appBy)
 const appByLink = ref(CONSTANT.appByLink)
 
+const type_password            = ref('password')
+const icon_password            = ref('ri-eye-close-fill')
+
+function togglePassword(){
+    if(type_password.value == 'text'){
+        type_password.value = 'password'
+        icon_password.value = 'ri-eye-close-fill'
+    } else {
+        type_password.value = 'text'
+        icon_password.value = 'ri-eye-fill'
+    }
+}
 
 const form    = reactive({
   username : null,
@@ -27,8 +39,8 @@ const form    = reactive({
 
 const rules   = computed(()=>{
   return {
-    username : { required },
-    password : { required }
+    username : { required : helpers.withMessage('Username harus diisi', required) },
+    password : { required : helpers.withMessage('Password harus diisi', required) }
   }
 })
 
@@ -82,16 +94,20 @@ async function onSubmit(){
 	                                <form class="row g-3" @submit.prevent="onSubmit">
 	                                    <div class="col-12">
 	                                        <label for="yourUsername" class="form-label">Username</label>
-	                                        <div class="input-group has-validation">
-	                                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+	                                        <div class="input-group">
 	                                            <input type="text" v-model="form.username" class="form-control" id="yourUsername">
 	                                            <div class="invalid-feedback" style="display: block;" v-if="v$.username.$error">{{v$.username.$errors[0].$message}}</div>
 	                                        </div>
 	                                    </div>
 	                                    <div class="col-12">
 	                                        <label for="yourPassword" class="form-label">Password</label>
-	                                        <input type="password" v-model="form.password" class="form-control" id="yourPassword">
-	                                        <div class="invalid-feedback" style="display: block;" v-if="v$.password.$error">{{v$.password.$errors[0].$message}}</div>
+	                                        <div class="input-group">
+	                                            <span class="input-group-text" id="inputGroupPrepend">
+	                                            	<i :class="icon_password" @click="togglePassword" style="cursor: pointer;"></i>
+	                                            </span>
+		                                        <input :type="type_password" v-model="form.password" class="form-control" id="yourPassword">
+		                                        <div class="invalid-feedback" style="display: block;" v-if="v$.password.$error">{{v$.password.$errors[0].$message}}</div>
+		                                    </div>
 	                                    </div>
 	                                    <div class="col-12" style="visibility: hidden;">
 	                                        <div class="form-check">

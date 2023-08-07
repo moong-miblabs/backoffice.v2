@@ -34,8 +34,24 @@ const router = createRouter({
         {
             path: '/login',
             name: 'login',
+            beforeEnter : async (to,from,next) => {
+                const $store = useStore()
+                const token = $store.getToken
+                if(!token){
+                    next()
+                } else {
+                    var response = await axios.post(CONSTANT.serverURL+'verify',{ token })
+                    if(response.data){
+                        next({ name : 'home' })
+                    } else {
+                        $store.$reset()
+                        next()
+                    }
+                }
+            },
             component: () => import('../views/LoginView.vue')
         },
+        // Responden
         {
             path: '/responden',
             name: 'responden',
@@ -46,6 +62,69 @@ const router = createRouter({
                 Footer
             }
         },
+        {
+            path: '/create-responden',
+            name: 'create-responden',
+            components : {
+                Header,
+                Sidebar,
+                default : () => import('../views/CreateRespondenView.vue'),
+                Footer
+            }
+        },
+        {
+            path: '/update-responden/:id',
+            name: 'update-responden',
+            components : {
+                Header,
+                Sidebar,
+                default : () => import('../views/UpdateRespondenView.vue'),
+                Footer
+            }
+        },
+        {
+            path: '/delete-responden/:id',
+            name: 'delete-responden',
+            components : {
+                Header,
+                Sidebar,
+                default : () => import('../views/DeleteRespondenView.vue'),
+                Footer
+            }
+        },
+        // END Responden
+        // Chart
+        {
+            path : '/chartjs',
+            name : 'chartjs',
+            components : {
+                Header,
+                Sidebar,
+                default : () => import('../views/ChartjsView.vue'),
+                Footer
+            }
+        },
+        {
+            path : '/apex',
+            name : 'apex',
+            components : {
+                Header,
+                Sidebar,
+                default : () => import('../views/ApexView.vue'),
+                Footer
+            }
+        },
+        {
+            path : '/echart',
+            name : 'echart',
+            components : {
+                Header,
+                Sidebar,
+                default : () => import('../views/EchartView.vue'),
+                Footer
+            }
+        },
+        // END Chart
         // 404 Not Found
         {
             path: '/:pathMatch(.*)*',

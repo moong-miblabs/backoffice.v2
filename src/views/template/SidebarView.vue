@@ -12,6 +12,34 @@ const route 	= useRoute()
 	<!-- ======= Sidebar ======= -->
 	<aside id="sidebar" class="sidebar">
 	    <ul class="sidebar-nav" id="sidebar-nav">
+	    	<li class="nav-item">
+	            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+	                <i class="bi bi-bar-chart"></i>
+	                <span>Charts</span>
+	                <i class="bi bi-chevron-down ms-auto"></i>
+	            </a>
+	            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+	                <li>
+	                    <RouterLink :to="{ name : 'chartjs' }">
+	                        <i class="bi bi-circle"></i>
+	                        <span>Chart.js</span>
+	                    </RouterLink>
+	                </li>
+	                <li>
+	                    <RouterLink :to="{ name : 'apex' }">
+	                        <i class="bi bi-circle"></i>
+	                        <span>ApexCharts</span>
+	                    </RouterLink>
+	                </li>
+	                <li>
+	                    <RouterLink :to="{ name : 'echart' }">
+	                        <i class="bi bi-circle"></i>
+	                        <span>ECharts</span>
+	                    </RouterLink>
+	                </li>
+	            </ul>
+	        </li>
+	        <!-- End Charts Nav -->
 			<li class="nav-item">
 	            <RouterLink class="nav-link collapsed" :to="{ name : 'responden' }">
 	                <i class="bi bi-people"></i>
@@ -181,34 +209,6 @@ const route 	= useRoute()
 	            </ul>
 	        </li>
 	        <!-- End Tables Nav -->
-	        <li class="nav-item">
-	            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-	                <i class="bi bi-bar-chart"></i>
-	                <span>Charts</span>
-	                <i class="bi bi-chevron-down ms-auto"></i>
-	            </a>
-	            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-	                <li>
-	                    <a href="charts-chartjs.html">
-	                        <i class="bi bi-circle"></i>
-	                        <span>Chart.js</span>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="charts-apexcharts.html">
-	                        <i class="bi bi-circle"></i>
-	                        <span>ApexCharts</span>
-	                    </a>
-	                </li>
-	                <li>
-	                    <a href="charts-echarts.html">
-	                        <i class="bi bi-circle"></i>
-	                        <span>ECharts</span>
-	                    </a>
-	                </li>
-	            </ul>
-	        </li>
-	        <!-- End Charts Nav -->
 	        <li class="nav-item">
 	            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
 	                <i class="bi bi-gem"></i>
