@@ -67,6 +67,7 @@ onMounted(async ()=>{
     .draw();
     if($store.getFlash){
         Swal.fire($store.getFlash)
+        $store.setFlash(null)
     } else {
     	Swal.close()
     }
