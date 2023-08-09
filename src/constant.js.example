@@ -1,6 +1,6 @@
-export const serverURL = ""
-export const appName = ""
-export const appTitle = ""
-export const appIcon = ""
-export const appBy = ""
-export const appByLink = ""
+export const serverURL = "" // for all axios
+export const appName = "" // for LoginPage and Header in All Page
+export const appTitle = "" // for title (tab) All Page
+export const appIcon = "" // for icon (tab) All Page
+export const appBy = "" // for LoginPage and Header in All Page
+export const appByLink = "" // for LoginPage and Header in All Page IF appBy clicked
