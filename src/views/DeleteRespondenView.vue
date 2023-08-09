@@ -33,7 +33,7 @@ onMounted(async ()=>{
 				})
 			} else {
 				$store.setFlash({
-					icon: 'Error',
+					icon: 'error',
 					title: 'Gagal',
 					text: response.data.error_desc
 				})
