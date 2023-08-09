@@ -3,11 +3,11 @@ import * as CONSTANT from '@/constant'
 import { ref, onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 
-const appName = ref(CONSTANT.appName)
+const appTitle = ref(CONSTANT.appTitle)
 const appIcon = ref(CONSTANT.appIcon)
 
 onMounted(()=>{
-    document.title = appName.value;
+    document.title = appTitle.value;
     var favicon = document.querySelector("link[rel~='icon']");
     favicon.href = appIcon.value;
 })
