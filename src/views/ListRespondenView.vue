@@ -22,7 +22,7 @@ async function getData(){
                 Authorization : $store.getToken
             }
         })
-        if(response.data.error_code == 0){
+        if(response.data.error_code == 0 || response.data.error_code == 1){
             dataSet.value = response.data.data
         } else {
             Swal.fire('Error',response.data.error_desc,'error')
