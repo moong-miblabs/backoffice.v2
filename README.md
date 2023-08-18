@@ -42,8 +42,9 @@ npm run build
 		1. pinia-plugin-persistedstate
 	5. sweetalert2
 	6. vue
-	7. vue-router
-	8. vuelidate (@vuelidate/core @vuelidate/validators)
+	7. vue-loading-overlay
+	8. vue-router
+	9. vuelidate (@vuelidate/core @vuelidate/validators)
 2. Vendor from Theme Nice Admin
 	1. Bootstrap 5
 	2. Icon
